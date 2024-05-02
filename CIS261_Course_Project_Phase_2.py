@@ -3,12 +3,13 @@
 #1MAY24
 
 def getDatesWorked():
-    fromdate = input("Please enter start date in the following format MM/DD/YYYY: ")
+    fromDate = input("Please enter start date in the following format MM/DD/YYYY: ")
     endDate = input("Pease enter end date in the following format MM/DD/YYYY: ")
+    return fromDate, endDate
     
 def getEmpName():
     empName = input("Enter employee name: ")
-    return getEmpName
+    return empName
 
 def getHoursWorked():
     hours = float(input("Enter Hours: "))
@@ -26,7 +27,7 @@ def getTaxRate():
 def CalcTaxAndNetPay(hours, hourlyRate, taxRate):
     gPay = hours * hourlyRate
     incomeTax = gPay * taxRate
-    netPay = gPay * incomeTax
+    netPay = gPay - incomeTax
     return gPay, incomeTax, netPay
 
 def printInfo(empDetailList):
@@ -71,7 +72,7 @@ if __name__ == "__main__":
         empName = getEmpName()
         if (empName.lower() == "end"):
             break
-        fromDate, endDate = getDateWorked()
+        fromDate, endDate = getDatesWorked()
         hours = getHoursWorked()
         hourlyRate = getHourlyRate()
         taxRate = getTaxRate()
@@ -79,10 +80,10 @@ if __name__ == "__main__":
         empDetail.insert(0, fromDate)
         empDetail.insert(1, endDate)
         empDetail.insert(2, empName)
-        empDetail.inseret(3, empHours)
+        empDetail.insert(3, hours)
         empDetail.insert(4, hourlyRate)
         empDetail.insert(5, taxRate)
-        empDetailList.append(empdetail)
+        empDetailList.append(empDetail)
     printInfo(empDetailList)
     printTotals(empTotals)
     
